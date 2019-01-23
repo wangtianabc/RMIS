@@ -1,0 +1,33 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: dm.jdbc.driver.DmDriver
+    url: jdbc:dm://192.168.52.132:5236/RMIS
+    username: RMIS
+    password: 123456789
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    filters: stat
+    logSlowSql: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.DmDialect
+        hbm2ddl:
+          auto: update
+    show-sql: true
+  devtools:
+    restart:
+      enabled: true
+#logging:
+#  file: my.log
