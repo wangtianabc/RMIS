@@ -3,4 +3,4 @@
 >1. spring-boot
 >2. spring-security
 >3. swagger2
->4. Restful
+>4. RESTful
