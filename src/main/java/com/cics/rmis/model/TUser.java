@@ -20,6 +20,8 @@ public class TUser implements UserDetails {
     private String username;
     @Column
     private String password;
+    @Column
+    private String roles;
 
     public TUser() {
 
@@ -95,4 +97,11 @@ public class TUser implements UserDetails {
         this.password = password;
     }
 
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
 }

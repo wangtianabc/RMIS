@@ -18,10 +18,13 @@ import org.springframework.util.DigestUtils;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public AuthenticationSuccessHandlerImpl authenticationSuccessHandler;
+    AuthenticationSuccessHandlerImpl authenticationSuccessHandler;
 
     @Autowired
-    public AuthenticationFailureHandlerImpl authenticationFailureHandler;
+    AuthenticationFailureHandlerImpl authenticationFailureHandler;
+
+    @Autowired
+    LogoutSuccessHandlerImpl logoutSuccessHandler;
 
     @Autowired
     CustomUserService userService;
@@ -62,10 +65,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessHandler(logoutSuccessHandler)
                 .permitAll()
                 .and()
                 .csrf().disable()
                 .cors();
-
     }
 }
