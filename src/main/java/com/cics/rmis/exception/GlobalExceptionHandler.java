@@ -16,11 +16,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = MyException.class)
     @ResponseBody
     public ErrorInfo<Object> jsonErrorHandler(HttpServletRequest req, MyException e) throws Exception {
-        ErrorInfo<Object> r = new ErrorInfo<>();
-        r.setMessage(e.getMessage());
-        r.setCode(ErrorInfo.ERROR);
-        r.setData(e.getStackTrace());
-        r.setUrl(req.getRequestURL().toString());
-        return r;
+        return ErrorInfo.error("发生异常，请联系管理员。", req.getRequestURI());
     }
 }

@@ -1,5 +1,7 @@
 server:
   port: 8080
+  tomcat:
+    max-http-post-size: -1  #取消post长度限制
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

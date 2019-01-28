@@ -84,16 +84,18 @@ public class UserController {
     @ApiImplicitParam(name = "user", value = "用户详细信息实体")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @Transactional
-    public RespBean register(@RequestBody TUser user) {
+    public RespBean register(@ModelAttribute TUser user) {
         // 对用户密码加密
         if(user.getUsername()!=null){
             TUser existUser = this.userRepository.findByUsername(user.getUsername());
             if(existUser != null){
                 return RespBean.error("用户已存在！");
             }
+        }else{
+            return RespBean.error("注册失败");
         }
         user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
         this.userRepository.save(user);
-        return RespBean.ok("保存成功");
+        return RespBean.ok("注册成功");
     }
 }

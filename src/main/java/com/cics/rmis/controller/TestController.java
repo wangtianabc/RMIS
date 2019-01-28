@@ -18,6 +18,7 @@ public class TestController {
 
     @RequestMapping("/hello")
     public String index(@RequestParam("browser") String browser, HttpServletRequest request, HttpSession session){
+        Map map = request.getParameterMap();
         Object sessionBrowser = session.getAttribute("browser");
         if (sessionBrowser == null) {
             System.out.println("不存在session，设置browser=" + browser);

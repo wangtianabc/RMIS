@@ -37,7 +37,6 @@ public class AuthenticationFailureHandlerImpl implements AuthenticationFailureHa
         } else {
             respBean = RespBean.error("登录失败!");
         }
-        httpServletResponse.setStatus(401);
         ObjectMapper om = new ObjectMapper();
         PrintWriter out = httpServletResponse.getWriter();
         out.write(om.writeValueAsString(respBean));
